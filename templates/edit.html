@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+{% block title %}Edit Data{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-md-6" style="margin: 0 auto;">
+      <form action="/update/{{id}}">
+        <div class="form-group">
+          <label for="title">Todo Title</label>
+          <input type="text" class="form-control" id="title" name="title" value={{title}}>
+        </div>
+        <div class="form-group">
+          <label for="description">Todo Description</label>
+          <textarea class="form-control" id="description" name="description" rows="3">{{description}}</textarea>
+        </div>
+        <div class="form-group">
+          <label for="category">category</label>
+          <input type="text" class="form-control" id="category" name="category" value={{category}}>
+        </div>
+        <div class="form-group">
+          <label for="due_date">due_date</label>
+          <input type="date" class="form-control" id="due_date" name="due_date" value={{due_date}}>
+        </div>
+        
+        <button type="submit" class="btn btn-primary" style="margin: 0 auto;display: block;">Update</button>
+      </form>
+      </div>
+      </div>
+{% endblock %}

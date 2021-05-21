@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+{% block title %}All Todo's{% endblock %}
+{% block content %}
+{% for eachtodo in alltodos %}
+<div class="row">
+    <div class="col-md-6" style="margin:0 auto;">
+        <div class="card container-fluid" style="margin-top: 1rem;">
+            <div class="card-body">
+              <h5>{{eachtodo.title}}</h5>
+              <p class="card-text">{{eachtodo.description}}</p>
+              {% if eachtodo.due_date is None %}
+                <p class="card-text">{{eachtodo.created_at}}</p>
+              {% else %}
+                <p class="card-text">{{eachtodo.created_at}} | {{eachtodo.due_date}}</p>
+              {% endif %}
+              <a href="/delete/{{eachtodo.id}}" class="btn btn-danger">Delete</a>
+              <a href="/edit/{{eachtodo.id}}" class="btn btn-warning">Edit</a>
+              {% if eachtodo.is_complete == False %}
+                <a href="/complete/{{eachtodo.id}}"class="btn btn-link" style="font-color:'gray">Not Complete</a>
+              {% elif eachtodo.is_complete == True %}
+                <a href="/complete/{{eachtodo.id}}"class="btn btn-link" style="font-color:'green">Completed</a>
+              {% endif %}
+
+            </div>
+          </div>
+    </div>
+</div>
+
+{% endfor %}
+{% endblock %}
